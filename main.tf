@@ -24,7 +24,7 @@ resource "aws_instance" "blog" {
   instance_type = var.instance_type
 
   vpc_security_group_ids = [aws_security_group.blog.id]
-  
+
   tags = {
     Name = "HelloWorld"
   }
@@ -37,7 +37,7 @@ resource "aws_security_group" "blog" {
   vpc_id = data.aws_vpc.default.id
 }
 
-resource "aws_security_group_rule" "blog_http_in"(
+resource "aws_security_group_rule" "blog_http_in"{
   type        = "ingress"
   from_port   = 80
   to_port     = 80
@@ -45,9 +45,9 @@ resource "aws_security_group_rule" "blog_http_in"(
   cidr_blocks = ["0.0.0.0/0"]
 
   aws_security_group_id = aws_security_group.blog.id
-)
+}
 
-resource "aws_security_group_rule" "blog_http_in"(
+resource "aws_security_group_rule" "blog_http_in"{
   type        = "ingress"
   from_port   = 443
   to_port     = 43
@@ -55,9 +55,9 @@ resource "aws_security_group_rule" "blog_http_in"(
   cidr_blocks = ["0.0.0.0/0"]
 
   aws_security_group_id = aws_security_group.blog.id
-)
+}
 
-resource "aws_security_group_rule" "blog_everything_out"(
+resource "aws_security_group_rule" "blog_everything_out"{
   type        = "engress"
   from_port   = 0
   to_port     = 
@@ -66,4 +66,4 @@ resource "aws_security_group_rule" "blog_everything_out"(
 
   aws_security_group_id = aws_security_group.blog.id
 
-)
+}
